@@ -1,0 +1,13 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Estados
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-item-group>
+        <ion-item *ngFor="let estado of estados">{{ estado.nome }}</ion-item>
+    </ion-item-group>
+</ion-content>

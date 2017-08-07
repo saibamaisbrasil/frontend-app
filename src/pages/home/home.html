@@ -1,17 +1,22 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Saiba mais Brasil</ion-title>
+    </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content>
+    <img src="assets/img/bg-br.png"/>
+
+    <h3 padding-horizontal>Bem-vindo ao SMB!</h3>
+
+    <p padding-horizontal>The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.</p>
+
+    <ion-list>
+        <ion-item>
+            <ion-icon name="help-circle" item-start></ion-icon>Como funciona?
+        </ion-item>
+        <ion-item (click)="toEnquete()" color="primary">
+            <ion-icon name="play" item-start></ion-icon>Começar
+        </ion-item>
+    </ion-list>
 </ion-content>

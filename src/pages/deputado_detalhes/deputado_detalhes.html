@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Deputados
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div *ngIf="deputado">
+        <ion-item no-lines>
+            <ion-avatar item-start>
+                <img src="{{ deputado.ultimoStatus.urlFoto }}" class="foto-detalhes">
+            </ion-avatar>
+
+            <ion-item no-padding>
+                <h3>{{ deputado.ultimoStatus.nomeEleitoral }}</h3>
+                <p>{{ deputado.ultimoStatus.siglaPartido }} - {{ deputado.ultimoStatus.siglaUf }}</p>
+            </ion-item>
+            <p>Situação: {{ deputado.ultimoStatus.situacao | uppercase }}</p>
+        </ion-item>
+
+        <ion-list>
+            <ion-list-header>
+                Contato
+            </ion-list-header>
+            <ion-item>Telefone: {{ deputado.ultimoStatus.gabinete.telefone }}</ion-item>
+            <ion-item>Email: {{ deputado.ultimoStatus.gabinete.email }}</ion-item>
+        </ion-list>
+
+        <ion-list>
+            <ion-list-header>
+                Outras informações
+            </ion-list-header>
+            <ion-item>Nome Civil: {{ deputado.nomeCivil | uppercase }}</ion-item>
+            <ion-item>Sexo: {{ deputado.sexo == 'M' ? 'MASCULINO' : 'FEMININO' }}</ion-item>
+            <ion-item>Nascimento: {{ deputado.dataNascimento | date : 'dd/MM/yyyy' }}</ion-item>
+            <ion-item>Escolaridade: {{ deputado.escolaridade | uppercase }}</ion-item>
+        </ion-list>
+    </div>
+</ion-content>
