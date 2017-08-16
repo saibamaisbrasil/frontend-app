@@ -5,55 +5,50 @@
 </ion-header>
 
 <ion-content>
-    <ion-list-header>
-        Tema
-    </ion-list-header>
-
-    <p padding-horizontal>
-        Permite ao contribuinte do imposto de renda deduzir do imposto devido parte das doações feitas a entidades de ensino público superior.
-    </p>
-
-    <ion-row no-padding>
-        <ion-col>
-            <span ion-button clear small color="primary" icon-start>
-                <ion-icon name='pricetag'></ion-icon>
-                PL 1805
-            </span>
-        </ion-col>
-        <ion-col text-center>
-            <span ion-button clear small color="primary" icon-start float-right>
-                <ion-icon name='calendar'></ion-icon>
-                2007
-            </span>
-        </ion-col>
-    </ion-row>
-
     <ion-list>
-        <ion-list>
-            <button ion-item><ion-icon name="search" item-start></ion-icon>Inteiro teor</button>
-        </ion-list>
+        <ion-list-header>Proposições</ion-list-header>
+
+        <ion-item>
+            <ion-label>Assunto</ion-label>
+            <ion-select [(ngModel)]="estado">
+                <ion-option selected value="ALL">Todos</ion-option>
+                <ion-option *ngFor="let estado of estados" value="{{estado.sigla}}">{{ estado.nome }}</ion-option>
+            </ion-select>
+        </ion-item>
     </ion-list>
 
-    <ion-row>
-        <ion-col>
-            <button ion-button block medium color="secondary" icon-start>
-                <ion-icon name='thumbs-up'></ion-icon>
-                Sim
-            </button>
-        </ion-col>
-        <ion-col text-center>
-            <button ion-button block medium color="danger" icon-start>
-                <ion-icon name='thumbs-down'></ion-icon>
-                Não
-            </button>
-        </ion-col>
-    </ion-row>
-    <ion-row>
-        <ion-col col-12 text-center>
-            <span ion-button clear small color="primary" icon-start>
-                <ion-icon name='return-right'></ion-icon>
-                Terminar
-            </span>
-        </ion-col>
-    </ion-row>
+    <ion-list>
+        <ion-list-header>Deputado</ion-list-header>
+
+        <ion-item>
+            <ion-label>Estado</ion-label>
+            <ion-select [(ngModel)]="estado">
+                <ion-option selected value="ALL">Todos</ion-option>
+                <ion-option *ngFor="let estado of estados" value="{{estado.sigla}}">{{ estado.nome }}</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Partido</ion-label>
+            <ion-select [(ngModel)]="partido">
+                <ion-option selected value="ALL">Todos</ion-option>
+                <ion-option *ngFor="let partido of partidos" value="{{partido.sigla}}">{{ partido.nome }}</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Deputado</ion-label>
+            <ion-select [(ngModel)]="deputado">
+                <ion-option selected value="ALL">Todos</ion-option>
+                <ion-option *ngFor="let deputado of deputados" value="{{deputado.id}}">{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</ion-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+
+    <ion-footer padding>
+        <button ion-button block (click)="toEnquete()">Continuar</button>
+        <!-- <ion-item (click)="toEnquete()" color="primary">
+            <ion-icon name="play" item-start></ion-icon>Continuar
+        </ion-item> -->
+    </ion-footer>
 </ion-content>

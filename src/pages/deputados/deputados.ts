@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-import { Http } from '@angular/http';
-import { LoadingController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import 'rxjs/Rx';
 
-import { API_URL } from '../../app/app.constants';
 import { DeputadoDetalhesPage } from '../deputado_detalhes/deputado_detalhes';
 
 @Component({
@@ -13,6 +11,7 @@ import { DeputadoDetalhesPage } from '../deputado_detalhes/deputado_detalhes';
     templateUrl: 'deputados.html'
 })
 export class DeputadosPage {
+    storage: Storage;
     deputados: any;
     estados: any;
     partidos: any;
@@ -22,50 +21,21 @@ export class DeputadosPage {
     constructor(
         public navCtrl: NavController,
         public alertCtrl: AlertController,
-        public loadingController: LoadingController,
-        private http: Http) {
+        storage: Storage) {
+        this.storage = storage;
     }
 
     ngOnInit(): void {
-        // configura e mostra tela de loading
-        let loader = this.loadingController.create({
-            content: ''
-        });
-        loader.present();
-
-        // configura o alert mostrado em caso de erro
-        let alert = this.alertCtrl.create({
-            title: 'Ops!',
-            subTitle: 'Alguma coisa não saiu como o esperado. Tente novamente.',
-            buttons: ['OK']
+        this.storage.get('deputados').then((deputados) => {
+            this.deputados = deputados;
         });
 
-        // carrega os deputados
-        this.http.get(API_URL + 'deputados')
-        .finally(() => { loader.dismiss(); })
-        .subscribe(res => {
-            this.deputados = res.json();
-        },
-        (err) => {
-            alert.present();
+        this.storage.get('estados').then((estados) => {
+            this.estados = estados;
         });
 
-        // carrega os estados
-        this.http.get(API_URL + 'estados')
-        .subscribe(res => {
-            this.estados = res.json();
-        },
-        (err) => {
-            alert.present();
-        });
-
-        // carrega os partidos
-        this.http.get(API_URL + 'partidos')
-        .subscribe(res => {
-            this.partidos = res.json();
-        },
-        (err) => {
-            alert.present();
+        this.storage.get('partidos').then((partidos) => {
+            this.partidos = partidos;
         });
     }
 
@@ -119,22 +89,18 @@ export class DeputadosPage {
     filterDeputadosPorEstado(estado : any) {
         this.filtroTitulo = estado.nome;
 
-        this.filtroDeputados = [];
-
-        for (let deputado of this.deputados) {
-            if(deputado.siglaUf == estado.sigla) this.filtroDeputados.push(deputado);
-        }
+        this.filtroDeputados = this.deputados.filter((elem, i, array) => {
+            return elem.siglaUf == estado.sigla;
+        });
     }
 
     // filtra os deputados pelo partido selecionado
     filterDeputadosPorPartido(partido : any) {
         this.filtroTitulo = partido.nome;
 
-        this.filtroDeputados = [];
-
-        for (let deputado of this.deputados) {
-            if(deputado.siglaPartido == partido.sigla) this.filtroDeputados.push(deputado);
-        }
+        this.filtroDeputados = this.deputados.filter((elem, i, array) => {
+            return elem.siglaPartido == partido.sigla;
+        });
     }
 
     // direciona para a pagina de detalhes do deputado selecionado

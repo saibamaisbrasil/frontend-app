@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
+import { Storage } from '@ionic/storage';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { IntroPage } from '../pages/intro/intro';
@@ -49,6 +50,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
         HttpModule,
         StatusBar,
         SplashScreen,
+        Storage,
         {provide: ErrorHandler, useClass: IonicErrorHandler}
     ]
 })

@@ -5,18 +5,20 @@
 </ion-header>
 
 <ion-content>
-    <img src="assets/img/bg-br.png"/>
+    <!-- <img src="assets/img/bg-br.png"/> -->
 
     <h3 padding-horizontal>Bem-vindo ao SMB!</h3>
 
     <p padding-horizontal>The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.</p>
 
-    <ion-list>
-        <ion-item>
+    <ion-footer padding>
+        <!-- <button ion-button block color="light">Como funciona?</button> -->
+        <button ion-button block (click)="toEnquete()">Começar</button>
+        <!-- <ion-item>
             <ion-icon name="help-circle" item-start></ion-icon>Como funciona?
         </ion-item>
         <ion-item (click)="toEnquete()" color="primary">
             <ion-icon name="play" item-start></ion-icon>Começar
-        </ion-item>
-    </ion-list>
+        </ion-item> -->
+    </ion-footer>
 </ion-content>
