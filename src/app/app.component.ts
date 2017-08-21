@@ -47,6 +47,24 @@ export class MyApp {
 
         });
 
+        // carrega as proposicoes
+        this.http.get(API_URL + 'proposicoes')
+        .subscribe(res => {
+            this.storage.set('proposicoes', res.json());
+        },
+        (err) => {
+
+        });
+
+        // carrega os temas das proposicoes
+        this.http.get(API_URL + 'proposicoes/temas')
+        .subscribe(res => {
+            this.storage.set('temas', res.json());
+        },
+        (err) => {
+
+        });
+
         // carrega os estados
         this.http.get(API_URL + 'estados')
         .subscribe(res => {

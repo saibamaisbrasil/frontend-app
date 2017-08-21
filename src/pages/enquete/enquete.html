@@ -5,50 +5,85 @@
 </ion-header>
 
 <ion-content>
-    <ion-list>
-        <ion-list-header>Proposições</ion-list-header>
+    <div *ngIf="!enqueteComecar">
+        <ion-list>
+            <ion-list-header>Proposições</ion-list-header>
 
-        <ion-item>
-            <ion-label>Assunto</ion-label>
-            <ion-select [(ngModel)]="estado">
-                <ion-option selected value="ALL">Todos</ion-option>
-                <ion-option *ngFor="let estado of estados" value="{{estado.sigla}}">{{ estado.nome }}</ion-option>
-            </ion-select>
-        </ion-item>
-    </ion-list>
+            <ion-item>
+                <ion-label>Tema</ion-label>
+                <ion-select [(ngModel)]="enqueteTema">
+                    <ion-option selected value="ALL">Todos</ion-option>
+                    <ion-option *ngFor="let tema of temas" value="{{tema}}">{{ tema }}</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-list>
 
-    <ion-list>
-        <ion-list-header>Deputado</ion-list-header>
+        <ion-list>
+            <ion-list-header>Deputado</ion-list-header>
 
-        <ion-item>
-            <ion-label>Estado</ion-label>
-            <ion-select [(ngModel)]="estado">
-                <ion-option selected value="ALL">Todos</ion-option>
-                <ion-option *ngFor="let estado of estados" value="{{estado.sigla}}">{{ estado.nome }}</ion-option>
-            </ion-select>
-        </ion-item>
+            <ion-item>
+                <ion-label>Estado</ion-label>
+                <ion-select [(ngModel)]="estado">
+                    <ion-option selected value="ALL">Todos</ion-option>
+                    <ion-option *ngFor="let estado of estados" value="{{estado.sigla}}">{{ estado.nome }}</ion-option>
+                </ion-select>
+            </ion-item>
 
-        <ion-item>
-            <ion-label>Partido</ion-label>
-            <ion-select [(ngModel)]="partido">
-                <ion-option selected value="ALL">Todos</ion-option>
-                <ion-option *ngFor="let partido of partidos" value="{{partido.sigla}}">{{ partido.nome }}</ion-option>
-            </ion-select>
-        </ion-item>
+            <ion-item>
+                <ion-label>Partido</ion-label>
+                <ion-select [(ngModel)]="partido">
+                    <ion-option selected value="ALL">Todos</ion-option>
+                    <ion-option *ngFor="let partido of partidos" value="{{partido.sigla}}">{{ partido.nome }}</ion-option>
+                </ion-select>
+            </ion-item>
 
-        <ion-item>
-            <ion-label>Deputado</ion-label>
-            <ion-select [(ngModel)]="deputado">
-                <ion-option selected value="ALL">Todos</ion-option>
-                <ion-option *ngFor="let deputado of deputados" value="{{deputado.id}}">{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</ion-option>
-            </ion-select>
-        </ion-item>
-    </ion-list>
+            <ion-item>
+                <ion-label>Deputado</ion-label>
+                <ion-select [(ngModel)]="deputado">
+                    <ion-option selected value="ALL">Todos</ion-option>
+                    <ion-option *ngFor="let deputado of deputados" value="{{deputado.id}}">{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-list>
 
-    <ion-footer padding>
-        <button ion-button block (click)="toEnquete()">Continuar</button>
-        <!-- <ion-item (click)="toEnquete()" color="primary">
+        <ion-footer padding>
+            <button ion-button block (click)="toProposicoes()">Continuar</button>
+            <!-- <ion-item (click)="toEnquete()" color="primary">
             <ion-icon name="play" item-start></ion-icon>Continuar
         </ion-item> -->
-    </ion-footer>
+        </ion-footer>
+
+    </div>
+    <div *ngIf="enqueteComecar">
+        <ion-card *ngFor="let proposicao of enqueteProposicoes">
+            <ion-card-content>
+                <ion-card-title>
+                    {{ proposicao.nome }}
+                </ion-card-title>
+                <p>
+                    Tema: {{ proposicao.tema }}
+                </p>
+                <p>
+                    Ementa: {{ proposicao.ementa }}
+                </p>
+                <p>
+                    Autor: {{ proposicao.autor }}
+                </p>
+            </ion-card-content>
+
+            <ion-row no-padding>
+                <ion-col>
+                    <button ion-button clear large color="secondary" icon-start>
+                        <ion-icon name='thumbs-up'></ion-icon>
+                    </button>
+                </ion-col>
+                <ion-col text-right>
+                    <button ion-button clear large color="danger" icon-start>
+                        <ion-icon name='thumbs-down'></ion-icon>
+                    </button>
+                </ion-col>
+            </ion-row>
+
+        </ion-card>
+    </div>
 </ion-content>

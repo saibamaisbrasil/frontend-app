@@ -89,18 +89,14 @@ export class DeputadosPage {
     filterDeputadosPorEstado(estado : any) {
         this.filtroTitulo = estado.nome;
 
-        this.filtroDeputados = this.deputados.filter((elem, i, array) => {
-            return elem.siglaUf == estado.sigla;
-        });
+        this.filtroDeputados = this.deputados.filter((elem) => elem.siglaUf == estado.sigla);
     }
 
     // filtra os deputados pelo partido selecionado
     filterDeputadosPorPartido(partido : any) {
         this.filtroTitulo = partido.nome;
 
-        this.filtroDeputados = this.deputados.filter((elem, i, array) => {
-            return elem.siglaPartido == partido.sigla;
-        });
+        this.filtroDeputados = this.deputados.filter((elem) => elem.siglaPartido == partido.sigla);
     }
 
     // direciona para a pagina de detalhes do deputado selecionado
