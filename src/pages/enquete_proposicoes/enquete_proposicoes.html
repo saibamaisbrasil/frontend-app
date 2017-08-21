@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Proposições</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngFor="let proposicao of proposicoes">
+        <ion-card-content>
+            <ion-card-title>
+                {{ proposicao.nome }}
+            </ion-card-title>
+
+            <h4>
+                Tema: {{ proposicao.tema }}
+            </h4>
+            <h4 padding-vertical>
+                Ementa: {{ proposicao.ementa }}
+            </h4>
+            <h4>
+                Autor: {{ proposicao.autorNome }} ({{ proposicao.autorPartido }} - {{ proposicao.autorUf }})
+            </h4>
+        </ion-card-content>
+
+        <ion-row no-padding>
+            <ion-col>
+                <button ion-button clear large color="secondary" icon-start>
+                    <ion-icon name='thumbs-up'></ion-icon>
+                </button>
+            </ion-col>
+            <ion-col text-right>
+                <button ion-button clear large color="danger" icon-start>
+                    <ion-icon name='thumbs-down'></ion-icon>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+</ion-content>

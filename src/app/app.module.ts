@@ -9,6 +9,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { IntroPage } from '../pages/intro/intro';
 import { HomePage } from '../pages/home/home';
 import { EnquetePage } from '../pages/enquete/enquete';
+import { EnqueteProposicoesPage } from '../pages/enquete_proposicoes/enquete_proposicoes';
 import { DeputadosPage } from '../pages/deputados/deputados';
 import { DeputadoDetalhesPage } from '../pages/deputado_detalhes/deputado_detalhes';
 import { NoticiasPage } from '../pages/noticias/noticias';
@@ -24,6 +25,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
         IntroPage,
         HomePage,
         EnquetePage,
+        EnqueteProposicoesPage,
         DeputadosPage,
         DeputadoDetalhesPage,
         NoticiasPage,
@@ -41,6 +43,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
         IntroPage,
         HomePage,
         EnquetePage,
+        EnqueteProposicoesPage,
         DeputadosPage,
         DeputadoDetalhesPage,
         NoticiasPage,

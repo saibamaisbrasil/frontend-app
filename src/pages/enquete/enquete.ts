@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
+import { EnqueteProposicoesPage } from '../enquete_proposicoes/enquete_proposicoes'
+
 @Component({
     selector: 'page-enquete',
     templateUrl: 'enquete.html'
@@ -15,9 +17,10 @@ export class EnquetePage {
     estados: any;
     partidos: any;
 
-    enqueteComecar: boolean = false;
-    enqueteTema: string;
-    enqueteProposicoes: any;
+    tema: string;
+    estado: any;
+    partido: any;
+    deputado: any;
 
     constructor(public navCtrl: NavController,
         public alertCtrl: AlertController,
@@ -92,8 +95,12 @@ export class EnquetePage {
     }
 
     toProposicoes() {
-        this.enqueteProposicoes = this.enqueteTema ? this.proposicoes.filter((elem) => elem.tema.includes()) : this.proposicoes;
-
-        this.enqueteComecar = true;
+        // direciona para a pagina de proposicoes da enquete
+        this.navCtrl.push(EnqueteProposicoesPage, {
+            tema: this.tema,
+            estado: this.estado,
+            partido: this.partido,
+            deputado: this.deputado,
+        });
     }
 }
