@@ -7,40 +7,32 @@
 </ion-header>
 
 <ion-content>
-    <ion-segment padding [(ngModel)]="filtro">
-        <ion-segment-button value="porEstado" (click)="doRadioEstado()">
-            Por estado
-        </ion-segment-button>
-        <ion-segment-button value="porPartido" (click)="doRadioPartido()">
-            Por partido
-        </ion-segment-button>
-    </ion-segment>
+    <ion-list>
+        <ion-list-header></ion-list-header>
 
-    <div [ngSwitch]="filtro" *ngIf="filtroDeputados">
-        <ion-list *ngSwitchCase="'porEstado'">
-            <ion-list-header>{{ filtroTitulo }} ({{ filtroDeputados.length }})</ion-list-header>
+        <ion-item>
+            <ion-label>Estado</ion-label>
+            <ion-select [(ngModel)]="estado">
+                <ion-option selected value="ALL">Todos</ion-option>
+                <ion-option *ngFor="let estado of estados" value="{{estado.sigla}}">{{ estado.nome }}</ion-option>
+            </ion-select>
+        </ion-item>
 
-            <ion-item *ngFor="let deputado of filtroDeputados" (click)="toDetalhes(deputado.id)">
-                <ion-avatar item-start>
-                    <img src="{{ deputado.urlFoto }}" class="foto">
-                </ion-avatar>
+        <ion-item>
+            <ion-label>Partido</ion-label>
+            <ion-select [(ngModel)]="partido">
+                <ion-option selected value="ALL">Todos</ion-option>
+                <ion-option *ngFor="let partido of partidos" value="{{partido.sigla}}">{{ partido.nome }}</ion-option>
+            </ion-select>
+        </ion-item>
 
-                <h2>{{ deputado.nome }}</h2>
-                <p>{{ deputado.siglaPartido }} - {{ deputado.siglaUf }}</p>
-            </ion-item>
-        </ion-list>
+        <ion-item>
+            <ion-label>Nome</ion-label>
+            <ion-input type="text" [(ngModel)]="nome" text-right uppercase></ion-input>
+        </ion-item>
+    </ion-list>
 
-        <ion-list *ngSwitchCase="'porPartido'">
-            <ion-list-header>{{ filtroTitulo }} ({{ filtroDeputados.length }})</ion-list-header>
-
-            <ion-item *ngFor="let deputado of filtroDeputados" (click)="toDetalhes(deputado.id)">
-                <ion-avatar item-start>
-                    <img src="{{ deputado.urlFoto }}" class="foto">
-                </ion-avatar>
-
-                <h2>{{ deputado.nome }}</h2>
-                <p>{{ deputado.siglaPartido }} - {{ deputado.siglaUf }}</p>
-            </ion-item>
-        </ion-list>
-    </div>
+    <ion-footer padding>
+        <button ion-button block (click)="toLista()">BUSCAR</button>
+    </ion-footer>
 </ion-content>

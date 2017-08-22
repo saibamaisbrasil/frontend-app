@@ -4,10 +4,10 @@ import { Storage } from '@ionic/storage';
 import 'rxjs/Rx';
 
 @Component({
-    selector: 'page-deputado_detalhes',
-    templateUrl: 'deputado_detalhes.html'
+    selector: 'page-deputados_detalhes',
+    templateUrl: 'deputados_detalhes.html'
 })
-export class DeputadoDetalhesPage {
+export class DeputadosDetalhesPage {
     storage: Storage;
     deputados: any;
     deputado: any;

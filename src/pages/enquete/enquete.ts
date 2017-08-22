@@ -50,50 +50,6 @@ export class EnquetePage {
         });
     }
 
-    // mostra um alert com os estados
-    doRadioEstado() {
-        let alert = this.alertCtrl.create().setTitle('Estado');
-
-        for (let estado of this.estados) {
-            alert.addInput({
-                type: 'radio',
-                label: estado.nome,
-                value: estado,
-            });
-        }
-
-        alert.addButton({
-            text: 'OK',
-            handler: data => {
-
-            }
-        });
-
-        alert.present();
-    }
-
-    // mostra um alert com os partidos
-    doRadioPartido() {
-        let alert = this.alertCtrl.create().setTitle('Partido');
-
-        for (let partido of this.partidos) {
-            alert.addInput({
-                type: 'radio',
-                label: partido.sigla + ' - ' + partido.nome,
-                value: partido,
-            });
-        }
-
-        alert.addButton({
-            text: 'OK',
-            handler: data => {
-
-            }
-        });
-
-        alert.present();
-    }
-
     toProposicoes() {
         // direciona para a pagina de proposicoes da enquete
         this.navCtrl.push(EnqueteProposicoesPage, {

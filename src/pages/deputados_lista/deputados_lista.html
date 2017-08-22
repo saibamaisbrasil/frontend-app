@@ -1,0 +1,16 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Deputados</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-item *ngFor="let deputado of deputados" (click)="toDetalhes(deputado.id)">
+        <ion-avatar item-start>
+            <img src="{{ deputado.urlFoto }}" class="foto">
+        </ion-avatar>
+
+        <h2>{{ deputado.nome }}</h2>
+        <p>{{ deputado.siglaPartido }} - {{ deputado.siglaUf }}</p>
+    </ion-item>
+</ion-content>
