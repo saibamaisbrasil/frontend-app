@@ -5,9 +5,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Http } from '@angular/http';
 import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import 'rxjs/Rx';
 
-import { TabsPage } from '../pages/tabs/tabs';
 import { API_URL } from './app.constants';
+import { TabsPage } from '../pages/tabs/tabs';
 
 @Component({
     templateUrl: 'app.html',

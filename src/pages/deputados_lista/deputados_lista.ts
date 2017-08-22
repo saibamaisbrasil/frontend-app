@@ -11,6 +11,9 @@ import { DeputadosDetalhesPage } from '../deputados_detalhes/deputados_detalhes'
 export class DeputadosListaPage {
     storage: Storage;
     deputados: any;
+    nome: string;
+    estado: string;
+    partido: string;
 
     constructor(public navCtrl: NavController,
         public navParams: NavParams,
@@ -22,18 +25,18 @@ export class DeputadosListaPage {
         this.storage.get('deputados').then((deputados) => {
             let temp = deputados;
 
-            let nome = this.navParams.get('nome');
-            let estado = this.navParams.get('estado');
-            let partido = this.navParams.get('partido');
+            this.nome = this.navParams.get('nome');
+            this.estado = this.navParams.get('estado');
+            this.partido = this.navParams.get('partido');
 
-            if (nome && nome != '') {
-                temp = temp.filter((elem) => elem.nome.includes(nome));
+            if (this.nome && this.nome != '') {
+                temp = temp.filter((elem) => elem.nome.includes(this.nome));
             }
-            if (estado && estado != 'ALL') {
-                temp = temp.filter((elem) => elem.siglaUf == estado);
+            if (this.estado && this.estado != 'ALL') {
+                temp = temp.filter((elem) => elem.siglaUf == this.estado);
             }
-            if (partido && partido != 'ALL') {
-                temp = temp.filter((elem) => elem.siglaPartido == partido);
+            if (this.partido && this.partido != 'ALL') {
+                temp = temp.filter((elem) => elem.siglaPartido == this.partido);
             }
 
             this.deputados = temp;

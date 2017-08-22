@@ -5,12 +5,20 @@
 </ion-header>
 
 <ion-content>
-    <ion-item *ngFor="let deputado of deputados" (click)="toDetalhes(deputado.id)">
-        <ion-avatar item-start>
-            <img src="{{ deputado.urlFoto }}" class="foto">
-        </ion-avatar>
+    <ion-list>
+        <ion-list-header>
+            <span *ngIf="nome || partido || estado">Busca: </span> {{ nome ? '"' + nome + '"' : '' }} <span *ngIf="partido || estado">(</span>{{ partido }}<span *ngIf="partido && estado">-</span>{{ estado }}<span *ngIf="partido || estado">)</span>
+            <br *ngIf="nome || partido || estado">
+            {{ deputados ? deputados.length : 0 }} resultado(s)
+        </ion-list-header>
 
-        <h2>{{ deputado.nome }}</h2>
-        <p>{{ deputado.siglaPartido }} - {{ deputado.siglaUf }}</p>
-    </ion-item>
+        <ion-item *ngFor="let deputado of deputados" (click)="toDetalhes(deputado.id)">
+            <ion-avatar item-start>
+                <img src="{{ deputado.urlFoto }}" class="foto">
+            </ion-avatar>
+
+            <h2>{{ deputado.nome }}</h2>
+            <p>{{ deputado.siglaPartido }} - {{ deputado.siglaUf }}</p>
+        </ion-item>
+    </ion-list>
 </ion-content>

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import 'rxjs/Rx';
 
 import { DeputadosListaPage } from '../deputados_lista/deputados_lista';
 
@@ -36,7 +35,7 @@ export class DeputadosPage {
     toLista() {
         // direciona para a pagina de proposicoes da enquete
         this.navCtrl.push(DeputadosListaPage, {
-            nome: this.nome.toUpperCase(),
+            nome: this.nome ? this.nome.toUpperCase() : '',
             estado: this.estado,
             partido: this.partido,
         });
