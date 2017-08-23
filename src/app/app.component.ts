@@ -9,12 +9,13 @@ import 'rxjs/Rx';
 
 import { API_URL } from './app.constants';
 import { TabsPage } from '../pages/tabs/tabs';
+import { IntroPage } from '../pages/intro/intro';
 
 @Component({
     templateUrl: 'app.html',
 })
 export class MyApp {
-    rootPage: any = TabsPage;
+    rootPage: any = IntroPage;
     storage: Storage;
 
     constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
+import { IntroPage } from '../intro/intro';
 import { HomePage } from '../home/home';
 import { EnquetePage } from '../enquete/enquete';
 import { DeputadosPage } from '../deputados/deputados';
@@ -17,7 +19,7 @@ export class TabsPage {
     tab4Root = NoticiasPage;
     tab5Root = AjustesPage;
 
-    constructor() {
+    constructor(public navCtrl: NavController) {
 
     }
 }

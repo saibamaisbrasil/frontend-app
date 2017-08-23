@@ -1,23 +1,27 @@
-<ion-header>
-    <ion-navbar>
-        <ion-title>Home</ion-title>
-    </ion-navbar>
-</ion-header>
-
-<ion-content>
+<ion-content class="tutorial-page">
     <ion-slides pager>
+        <ion-slide *ngFor="let slide of slides">
+            <ion-toolbar>
+                <ion-buttons end>
+                    <button ion-button color="primary" (click)="toHome()">Pular</button>
+                </ion-buttons>
+            </ion-toolbar>
 
-        <ion-slide style="background-color: green">
-            <h2>Slide 1</h2>
+            <img [src]="slide.image" class="slide-image"/>
+            <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+            <p [innerHTML]="slide.description"></p>
         </ion-slide>
 
-        <ion-slide style="background-color: blue">
-            <h2>Slide 2</h2>
-        </ion-slide>
+        <ion-slide>
+            <ion-toolbar>
+            </ion-toolbar>
 
-        <ion-slide style="background-color: red">
-            <h2>Slide 3</h2>
+            <!-- <img src="assets/img/ica-slidebox-img-4.png" class="slide-image"/> -->
+            <h2 class="slide-title" style="margin-top: 60%">Pronto pra começar?</h2>
+            <button ion-button large clear icon-end color="primary" (click)="toHome()">
+                Continuar
+                <ion-icon name="arrow-forward"></ion-icon>
+            </button>
         </ion-slide>
-
     </ion-slides>
 </ion-content>

@@ -43,26 +43,26 @@ $app-direction: ltr;
 // );
 
 // azul
-// $colors: (
-//   primary:    #004A80,
-//   secondary:  #32db64,
-//   danger:     #f53d3d,
-//   light:      #f4f4f4,
-//   dark:       #222
-// );
-//
-// $toolbar-background: #0063A9;
-
-// amarelo
 $colors: (
-  primary:    orange,
+  primary:    #004A80,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222
 );
 
-$toolbar-background: orange;
+$toolbar-background: #0063A9;
+
+// amarelo
+// $colors: (
+//   primary:    orange,
+//   secondary:  #32db64,
+//   danger:     #f53d3d,
+//   light:      #f4f4f4,
+//   dark:       #222
+// );
+//
+// $toolbar-background: orange;
 
 // App iOS Variables
 // --------------------------------------------------

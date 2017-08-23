@@ -4,21 +4,64 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content>
-    <!-- <img src="assets/img/bg-br.png"/> -->
+<ion-content class="card-background-page">
+    <ion-card>
+        <img src="assets/img/slidebox-img-1.png" class="card-image"/>
 
-    <h3 padding-horizontal>Bem-vindo ao SMB!</h3>
+        <h1 class="card-title">Deputados</h1>
+        <div class="card-subtitle">512 em 26 partidos</div>
 
-    <p padding-horizontal>The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.</p>
+        <ion-row no-padding>
+            <ion-col>
+                <button ion-button clear small color="primary" icon-start>
+                    Ir para deputados
+                </button>
+            </ion-col>
+            <ion-col text-right>
+                <button ion-button clear small color="primary" icon-start>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+    
+    <ion-card>
+        <img src="assets/img/slidebox-img-1.png" class="card-image"/>
 
-    <ion-footer padding>
-        <!-- <button ion-button block color="light">Como funciona?</button> -->
-        <button ion-button block (click)="toEnquete()">COMEÇAR</button>
-        <!-- <ion-item>
-            <ion-icon name="help-circle" item-start></ion-icon>Como funciona?
-        </ion-item>
-        <ion-item (click)="toEnquete()" color="primary">
-            <ion-icon name="play" item-start></ion-icon>Começar
-        </ion-item> -->
-    </ion-footer>
+        <h1 class="card-title">Votações</h1>
+        <div class="card-subtitle">26 proposições</div>
+
+        <ion-row no-padding>
+            <ion-col>
+                <button ion-button clear small color="primary" icon-start>
+                    Ir para proposições
+                </button>
+            </ion-col>
+            <ion-col text-right>
+                <button ion-button clear small color="primary" icon-start>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+
+    <ion-card>
+        <img src="assets/img/slidebox-img-1.png" class="card-image"/>
+
+        <h1 class="card-title">Gastos</h1>
+        <div class="card-subtitle">EM BREVE!</div>
+
+        <ion-row no-padding>
+            <ion-col>
+                <button ion-button clear small color="primary" icon-start>
+                    Ir para gastos parlamentares
+                </button>
+            </ion-col>
+            <ion-col text-right>
+                <button ion-button clear small color="primary" icon-start>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
 </ion-content>
