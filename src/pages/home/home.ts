@@ -15,4 +15,8 @@ export class HomePage {
     toVotacoes() {
         this.tabs.select(1);
     }
+
+    toDeputados() {
+        this.tabs.select(2);
+    }
 }

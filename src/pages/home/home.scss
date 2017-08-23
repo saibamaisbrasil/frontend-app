@@ -2,8 +2,16 @@ page-home {
 
 }
 
-.card-background-page {
+.subtitle{
+    text-align: center;
+    width: 100%;
+    background-color: #0063A9;
+    font-size: 1.3em;
+    padding: 0px 10px 10px 10px;
+    color: white;
+}
 
+.card-background-page {
     ion-card {
         position: relative;
         text-align: center;
@@ -18,7 +26,8 @@ page-home {
     }
 
     .card-overlay-soon{
-        background-color: rgba(0, 99, 169, 0.9);
+        background-color: rgba(50, 50, 50, 0.95);
+        // background-color: rgba(0, 99, 169, 0.9);
     }
 
     .card-title {

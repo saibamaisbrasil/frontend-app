@@ -1,20 +1,23 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>Saiba mais Brasil</ion-title>
+        <ion-title>HOME</ion-title>
     </ion-navbar>
+    <div class="subtitle">
+        Saiba mais Brasil
+    </div>
 </ion-header>
 
 <ion-content class="card-background-page">
-    <ion-card>
+    <ion-card (click)="toVotacoes()">
         <img src="assets/img/slidebox-img-1.png" class="card-image"/>
 
-        <h1 class="card-title card-overlay">Deputados</h1>
-        <div class="card-subtitle">512 em 26 partidos</div>
+        <h1 class="card-title card-overlay">Votações</h1>
+        <div class="card-subtitle">45 proposições</div>
 
         <ion-row no-padding>
             <ion-col>
                 <button ion-button clear small color="primary" icon-start>
-                    Ir para deputados
+                    Ir para proposições
                 </button>
             </ion-col>
             <ion-col text-right>
@@ -25,16 +28,16 @@
         </ion-row>
     </ion-card>
 
-    <ion-card>
+    <ion-card (click)="toDeputados()">
         <img src="assets/img/slidebox-img-1.png" class="card-image"/>
 
-        <h1 class="card-title card-overlay">Votações</h1>
-        <div class="card-subtitle">45 proposições</div>
+        <h1 class="card-title card-overlay">Deputados</h1>
+        <div class="card-subtitle">512 em 26 partidos</div>
 
         <ion-row no-padding>
             <ion-col>
                 <button ion-button clear small color="primary" icon-start>
-                    Ir para proposições
+                    Ir para deputados
                 </button>
             </ion-col>
             <ion-col text-right>
