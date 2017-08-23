@@ -8,8 +8,8 @@ import { Storage } from '@ionic/storage';
 import { TabsPage } from '../pages/tabs/tabs';
 import { IntroPage } from '../pages/intro/intro';
 import { HomePage } from '../pages/home/home';
-import { EnquetePage } from '../pages/enquete/enquete';
-import { EnqueteProposicoesPage } from '../pages/enquete_proposicoes/enquete_proposicoes';
+import { VotacoesPage } from '../pages/votacoes/votacoes';
+import { VotacoesProposicoesPage } from '../pages/votacoes_proposicoes/votacoes_proposicoes';
 import { DeputadosPage } from '../pages/deputados/deputados';
 import { DeputadosListaPage } from '../pages/deputados_lista/deputados_lista';
 import { DeputadosDetalhesPage } from '../pages/deputados_detalhes/deputados_detalhes';
@@ -25,8 +25,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
         TabsPage,
         IntroPage,
         HomePage,
-        EnquetePage,
-        EnqueteProposicoesPage,
+        VotacoesPage,
+        VotacoesProposicoesPage,
         DeputadosPage,
         DeputadosListaPage,
         DeputadosDetalhesPage,
@@ -44,8 +44,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
         TabsPage,
         IntroPage,
         HomePage,
-        EnquetePage,
-        EnqueteProposicoesPage,
+        VotacoesPage,
+        VotacoesProposicoesPage,
         DeputadosPage,
         DeputadosListaPage,
         DeputadosDetalhesPage,

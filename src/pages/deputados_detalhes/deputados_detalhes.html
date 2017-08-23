@@ -32,7 +32,7 @@
             <ion-list-header>
                 Outras informações
             </ion-list-header>
-            <ion-item>Nome Civil: {{ deputado.nomeCivil | uppercase }}</ion-item>
+            <ion-item>Nome: {{ deputado.nomeCivil | uppercase }}</ion-item>
             <ion-item>Sexo: {{ deputado.sexo == 'M' ? 'MASCULINO' : 'FEMININO' }}</ion-item>
             <ion-item>Nascimento: {{ deputado.dataNascimento | date : 'dd/MM/yyyy' }}</ion-item>
             <ion-item>Naturalidade: {{ deputado.municipioNascimento | uppercase }}</ion-item>

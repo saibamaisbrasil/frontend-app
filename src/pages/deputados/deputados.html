@@ -13,8 +13,8 @@
         <ion-item>
             <ion-label>Estado</ion-label>
             <ion-select [(ngModel)]="estado">
-                <ion-option selected value="ALL">Todos</ion-option>
-                <ion-option *ngFor="let estado of estados" value="{{estado.sigla}}">{{ estado.nome }}</ion-option>
+                <ion-option value="ALL">Todos</ion-option>
+                <ion-option *ngFor="let estado of estados" [value]="estado.sigla" [selected]="info.region == estado.sigla">{{ estado.nome }}</ion-option>
             </ion-select>
         </ion-item>
 
@@ -22,7 +22,7 @@
             <ion-label>Partido</ion-label>
             <ion-select [(ngModel)]="partido">
                 <ion-option selected value="ALL">Todos</ion-option>
-                <ion-option *ngFor="let partido of partidos" value="{{partido.sigla}}">{{ partido.nome }}</ion-option>
+                <ion-option *ngFor="let partido of partidos" [value]="partido.sigla">{{ partido.nome }}</ion-option>
             </ion-select>
         </ion-item>
 

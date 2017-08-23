@@ -4,10 +4,10 @@ import { AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 @Component({
-    selector: 'page-enquete_proposicoes',
-    templateUrl: 'enquete_proposicoes.html'
+    selector: 'page-votacoes_proposicoes',
+    templateUrl: 'votacoes_proposicoes.html'
 })
-export class EnqueteProposicoesPage {
+export class VotacoesProposicoesPage {
     storage: Storage;
     deputados: any;
     proposicoes: any;
@@ -34,7 +34,7 @@ export class EnqueteProposicoesPage {
             let estado = this.navParams.get('estado');
             let partido = this.navParams.get('partido');
             let deputado = this.navParams.get('deputado');
-            
+
             if (tema && tema != 'ALL') {
                 temp = temp.filter((elem) => elem.tema.includes(tema));
             }

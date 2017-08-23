@@ -39,6 +39,15 @@ export class MyApp {
         });
         loader.present();
 
+        // carrega os dados do ip (http://ip-api.com)
+        this.http.get('http://ip-api.com/json')
+        .subscribe(res => {
+            this.storage.set('info', res.json());
+        },
+        (err) => {
+
+        });
+
         // carrega os deputados
         this.http.get(API_URL + 'deputados')
         .finally(() => { loader.dismiss(); })

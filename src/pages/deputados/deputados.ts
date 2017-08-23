@@ -10,6 +10,7 @@ import { DeputadosListaPage } from '../deputados_lista/deputados_lista';
 })
 export class DeputadosPage {
     storage: Storage;
+    info: any;
     estados: any;
     partidos: any;
     nome: string;
@@ -23,6 +24,10 @@ export class DeputadosPage {
     }
 
     ngOnInit(): void {
+        this.storage.get('info').then((info) => {
+            this.info = info;
+        });
+
         this.storage.get('estados').then((estados) => {
             this.estados = estados;
         });
@@ -33,7 +38,7 @@ export class DeputadosPage {
     }
 
     toLista() {
-        // direciona para a pagina de proposicoes da enquete
+        // direciona para a pagina de resultados da busca
         this.navCtrl.push(DeputadosListaPage, {
             nome: this.nome ? this.nome.toUpperCase() : '',
             estado: this.estado,

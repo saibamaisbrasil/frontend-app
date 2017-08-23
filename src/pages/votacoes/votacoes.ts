@@ -3,14 +3,15 @@ import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
-import { EnqueteProposicoesPage } from '../enquete_proposicoes/enquete_proposicoes'
+import { VotacoesProposicoesPage } from '../votacoes_proposicoes/votacoes_proposicoes'
 
 @Component({
-    selector: 'page-enquete',
-    templateUrl: 'enquete.html'
+    selector: 'page-votacoes',
+    templateUrl: 'votacoes.html'
 })
-export class EnquetePage {
+export class VotacoesPage {
     storage: Storage;
+    info: any;
     deputados: any;
     proposicoes: any;
     temas: any;
@@ -29,6 +30,10 @@ export class EnquetePage {
     }
 
     ngOnInit(): void {
+        this.storage.get('info').then((info) => {
+            this.info = info;
+        });
+
         this.storage.get('deputados').then((deputados) => {
             this.deputados = deputados;
         });
@@ -52,7 +57,7 @@ export class EnquetePage {
 
     toProposicoes() {
         // direciona para a pagina de proposicoes da enquete
-        this.navCtrl.push(EnqueteProposicoesPage, {
+        this.navCtrl.push(VotacoesProposicoesPage, {
             tema: this.tema,
             estado: this.estado,
             partido: this.partido,

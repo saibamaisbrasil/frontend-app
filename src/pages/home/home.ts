@@ -12,8 +12,7 @@ export class HomePage {
         this.tabs = tabs;
     }
 
-    toEnquete() {
+    toVotacoes() {
         this.tabs.select(1);
     }
-
 }

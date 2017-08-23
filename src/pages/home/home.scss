@@ -13,6 +13,14 @@ page-home {
         height: 100px;
     }
 
+    .card-overlay{
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .card-overlay-soon{
+        background-color: rgba(0, 99, 169, 0.9);
+    }
+
     .card-title {
         height: 100px;
         position: absolute;
@@ -21,7 +29,7 @@ page-home {
         width: 100%;
         font-weight: bold;
         color: #fff;
-        background-color: rgba(0, 99, 169, 0.7);
+        // background-color: rgba(0, 0, 0, 0.3);
     }
 
     .card-subtitle {
