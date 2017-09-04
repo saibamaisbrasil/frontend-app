@@ -9,10 +9,10 @@
 
 <ion-content class="card-background-page">
     <ion-card (click)="toVotacoes()">
-        <img src="assets/img/slidebox-img-1.png" class="card-image"/>
+        <img src="assets/img/slidebox-img-2.png" class="card-image"/>
 
         <h1 class="card-title card-overlay">Votações</h1>
-        <div class="card-subtitle">45 proposições</div>
+        <div class="card-subtitle">{{ proposicoes?.length }} proposições</div>
 
         <ion-row no-padding>
             <ion-col>
@@ -32,7 +32,7 @@
         <img src="assets/img/slidebox-img-1.png" class="card-image"/>
 
         <h1 class="card-title card-overlay">Deputados</h1>
-        <div class="card-subtitle">512 em 26 partidos</div>
+        <div class="card-subtitle">{{ deputados?.length }} em {{ partidos?.length }} partidos</div>
 
         <ion-row no-padding>
             <ion-col>
@@ -49,19 +49,19 @@
     </ion-card>
 
     <ion-card>
-        <img src="assets/img/slidebox-img-1.png" class="card-image"/>
+        <img src="assets/img/slidebox-img-1a.png" class="card-image"/>
 
         <h1 class="card-title card-overlay-soon">Gastos</h1>
         <div class="card-subtitle">EM BREVE!</div>
 
         <ion-row no-padding>
             <ion-col>
-                <button ion-button clear small color="primary" icon-start>
+                <button ion-button clear small color="dark" icon-start>
                     Ir para gastos parlamentares
                 </button>
             </ion-col>
             <ion-col text-right>
-                <button ion-button clear small color="primary" icon-start>
+                <button ion-button clear small color="dark" icon-start>
                     <ion-icon name="arrow-forward"></ion-icon>
                 </button>
             </ion-col>

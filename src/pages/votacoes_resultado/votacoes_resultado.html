@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>RESULTADO</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-row padding text-center>
+        <h4>Você é parcialmente representado pelo deputado <b>Rodrigo Maia (DEM - RJ)</b></h4>
+
+        <div style="display: block; max-width: 80%; margin: 0 auto" padding-vertical>
+            <canvas baseChart
+            [data]="[66.6, 33.4]"
+            [colors]="[{ backgroundColor: ['#004A80', '#f4f4f4']}]"
+            [chartType]="'doughnut'"></canvas>
+        </div>
+
+        <div style="margin: 0 auto;" padding>Correspondência: 66,6%</div>
+
+        <button ion-button block color="primary">
+            <ion-icon name='share-alt'></ion-icon>&nbsp;&nbsp;COMPARTILHAR
+        </button>
+    </ion-row>
+</ion-content>

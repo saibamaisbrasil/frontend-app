@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
+import { VotacoesResultadoPage } from '../votacoes_resultado/votacoes_resultado';
+
 @Component({
-    selector: 'page-votacoes_proposicoes',
-    templateUrl: 'votacoes_proposicoes.html'
+    selector: 'page-votacoes_lista',
+    templateUrl: 'votacoes_lista.html'
 })
-export class VotacoesProposicoesPage {
+export class VotacoesListaPage {
     storage: Storage;
     deputados: any;
     proposicoes: any;
@@ -16,7 +17,6 @@ export class VotacoesProposicoesPage {
     partidos: any;
 
     constructor(public navCtrl: NavController,
-        public alertCtrl: AlertController,
         public navParams: NavParams,
         storage: Storage) {
         this.storage = storage;
@@ -62,5 +62,12 @@ export class VotacoesProposicoesPage {
         this.storage.get('partidos').then((partidos) => {
             this.partidos = partidos;
         });
+    }
+
+    // direciona para a pagina de resultado da enquete
+    toResultado() {
+        this.navCtrl.push(VotacoesResultadoPage, {
+            // id: id
+        })
     }
 }

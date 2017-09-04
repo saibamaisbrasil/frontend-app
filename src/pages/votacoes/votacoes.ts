@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
-import { VotacoesProposicoesPage } from '../votacoes_proposicoes/votacoes_proposicoes'
+import { VotacoesListaPage } from '../votacoes_lista/votacoes_lista'
 
 @Component({
     selector: 'page-votacoes',
@@ -55,9 +55,22 @@ export class VotacoesPage {
         });
     }
 
+    filterDeputados(value: any) {
+        let temp = this.deputados;
+
+        if (this.estado && this.estado != 'ALL') {
+            temp = temp.filter((elem) => elem.siglaUf == this.estado);
+        }
+        if (this.partido && this.partido != 'ALL') {
+            temp = temp.filter((elem) => elem.siglaPartido == this.partido);
+        }
+
+        this.deputados = temp;
+    }
+
     toProposicoes() {
         // direciona para a pagina de proposicoes da enquete
-        this.navCtrl.push(VotacoesProposicoesPage, {
+        this.navCtrl.push(VotacoesListaPage, {
             tema: this.tema,
             estado: this.estado,
             partido: this.partido,
