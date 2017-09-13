@@ -9,20 +9,29 @@ import { Storage } from '@ionic/storage';
 export class VotacoesResultadoPage {
     storage: Storage;
     deputados: any;
-    proposicoes: any;
-    temas: any;
-    estados: any;
-    partidos: any;
+    deputado: any;
+    quantidade: any;
+    correspondencias: any;
+    porcentagem: any;
 
-    constructor(public navCtrl: NavController,
-        public navParams: NavParams,
-        storage: Storage) {
-            this.storage = storage;
-        }
-
-        ngOnInit(): void {
-            this.storage.get('deputados').then((deputados) => {
-                this.deputados = deputados;
-            });
-        }
+    constructor(public navCtrl: NavController, public navParams: NavParams, storage: Storage) {
+        this.storage = storage;
+        this.deputado = {};
+        this.porcentagem = 0;
     }
+
+    ngOnInit(): void {
+        this.storage.get('deputados').then((deputados) => {
+            let temp = this.navParams.get('deputado');
+
+            this.deputados = deputados;
+
+            this.deputado = this.deputados.filter((elem) => elem.id == temp)[0];
+        });
+
+        this.quantidade = this.navParams.get('quantidade');
+        this.correspondencias = this.navParams.get('correspondencias');
+
+        this.porcentagem = (this.correspondencias / this.quantidade * 100).toFixed(1);
+    }
+}

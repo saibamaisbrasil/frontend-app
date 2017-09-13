@@ -1,10 +1,25 @@
 <ion-header>
     <ion-navbar>
         <ion-title>VOTAÇÕES</ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="doContinuar()">Continuar</button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
 <ion-content>
+    <ion-list>
+        <ion-list-header>Seu representante <small>(obrigatório)</small></ion-list-header>
+        <ion-item>
+            <ion-label>Deputado</ion-label>
+            <ion-select [(ngModel)]="deputado">
+                <!-- <ion-option selected value="ALL">Todos</ion-option> -->
+                <ion-option *ngFor="let deputado of deputados" value="{{ deputado.id }}">{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</ion-option>
+            </ion-select>
+        </ion-item>
+        <p padding-horizontal><small>Selecione o deputado que você deseja comparar e analisar os votos nas proposições.</small></p>
+    </ion-list>
+
     <ion-list>
         <ion-list-header>Proposições</ion-list-header>
 
@@ -22,7 +37,7 @@
 
         <ion-item>
             <ion-label>Estado</ion-label>
-            <ion-select [(ngModel)]="estado" (ionChange)="filterDeputados($event)">
+            <ion-select [(ngModel)]="estado" (ionChange)="filterAutores()">
                 <ion-option value="ALL">Todos</ion-option>
                 <ion-option *ngFor="let estado of estados" [value]="estado.sigla" [selected]="info.region == estado.sigla">{{ estado.nome }}</ion-option>
             </ion-select>
@@ -30,7 +45,7 @@
 
         <ion-item>
             <ion-label>Partido</ion-label>
-            <ion-select [(ngModel)]="partido" (ionChange)="filterDeputados($event)">
+            <ion-select [(ngModel)]="partido" (ionChange)="filterAutores()">
                 <ion-option selected value="ALL">Todos</ion-option>
                 <ion-option *ngFor="let partido of partidos" [value]="partido.sigla">{{ partido.nome }}</ion-option>
             </ion-select>
@@ -38,14 +53,14 @@
 
         <ion-item>
             <ion-label>Deputado</ion-label>
-            <ion-select [(ngModel)]="deputado">
+            <ion-select [(ngModel)]="autor">
                 <ion-option selected value="ALL">Todos</ion-option>
-                <ion-option *ngFor="let deputado of deputados" value="{{deputado.id}}">{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</ion-option>
+                <ion-option *ngFor="let autor of autores" value="{{ autor.id }}">{{ autor.nome }} ({{ autor.siglaPartido }} - {{ autor.siglaUf }})</ion-option>
             </ion-select>
         </ion-item>
     </ion-list>
 
-    <ion-footer padding>
-        <button ion-button block (click)="toProposicoes()">CONTINUAR</button>
-    </ion-footer>
+    <!-- <ion-footer ion-fixed padding>
+        <button ion-button block (click)="toProposicoes()" [disabled]="!deputado">CONTINUAR</button>
+    </ion-footer> -->
 </ion-content>

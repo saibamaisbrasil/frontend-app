@@ -1,6 +1,11 @@
 <ion-header>
     <ion-navbar>
         <ion-title>DEPUTADOS</ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="toLista()">
+                Buscar
+            </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
@@ -30,7 +35,7 @@
         </ion-item>
     </ion-list>
 
-    <ion-footer padding>
+    <!-- <ion-footer padding>
         <button ion-button block (click)="toLista()">BUSCAR</button>
-    </ion-footer>
+    </ion-footer> -->
 </ion-content>

@@ -76,6 +76,15 @@ export class MyApp {
 
         });
 
+        // carrega as votacoes
+        this.http.get(API_URL + 'votacoes')
+        .subscribe(res => {
+            this.storage.set('votacoes', res.json());
+        },
+        (err) => {
+
+        });
+
         // carrega os estados
         this.http.get(API_URL + 'estados')
         .subscribe(res => {

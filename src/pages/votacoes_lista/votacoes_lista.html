@@ -2,7 +2,7 @@
     <ion-navbar>
         <ion-title>PROPOSIÇÕES</ion-title>
         <ion-buttons end>
-            <button ion-button (click)="toResultado()">
+            <button ion-button (click)="doConcluir()">
                 Concluir
             </button>
         </ion-buttons>
@@ -10,130 +10,35 @@
 </ion-header>
 
 <ion-content>
-    <ion-card>
+    <ion-card *ngFor="let proposicao of proposicoes">
         <ion-card-content>
             <ion-card-title color="primary">
-                <a href="http://www25.senado.leg.br/web/atividade/materias/-/materia/126640">
-                    PLS 310-2016&nbsp;&nbsp;&nbsp;<ion-icon name='arrow-dropright-circle-outline'></ion-icon>
+                <a href="{{ proposicao.linkInteiroTeor }}">
+                    {{ proposicao.nome }}&nbsp;&nbsp;&nbsp;<ion-icon name='arrow-dropright-circle-outline'></ion-icon>
                 </a>
             </ion-card-title>
-            <h4>
-                Finanças Públicas e Orçamento
+            <h4 style="color: grey;">
+                {{ proposicao.tema }}
             </h4>
-            <h1 padding-vertical>
-                Obriga o preso a pagar pela própria tornozeleira eletrônica.
-            </h1>
+            <h2 padding-vertical>
+                {{ proposicao.ementa }}
+            </h2>
             <h4>
-                Paulo Bauer (PSDB - SC)
+                {{ proposicao.autorNome }} ({{ proposicao.autorPartido }} - {{ proposicao.autorUf }})
             </h4>
         </ion-card-content>
 
         <ion-row>
             <ion-col padding>
-                <button ion-button clear block color="secondary" icon-start>
+                <button ion-button clear="{{ proposicao.voto != 'Sim' }}" block color="secondary" (click)="proposicao.voto != 'Sim' ? proposicao.voto = 'Sim' : proposicao.voto = undefined" icon-start>
                     <ion-icon name='thumbs-up'></ion-icon> SIM
                 </button>
             </ion-col>
             <ion-col padding text-right>
-                <button ion-button clear block color="danger" icon-start>
+                <button ion-button clear="{{ proposicao.voto != 'Não' }}" block color="danger" (click)="proposicao.voto != 'Não' ? proposicao.voto = 'Não' : proposicao.voto = undefined" icon-start>
                     <ion-icon name='thumbs-down'></ion-icon> NÃO
                 </button>
             </ion-col>
         </ion-row>
     </ion-card>
-
-    <ion-card>
-        <ion-card-content>
-            <ion-card-title color="primary">
-                <a href="http://www.camara.gov.br/proposicoesWeb/prop_mostrarintegra;jsessionid=5710B6FF00AFFFEA2EA43C2938148894.proposicoesWebExterno2?codteor=1514975&filename=PEC+287/2016">
-                    PEC 287-2016&nbsp;&nbsp;&nbsp;<ion-icon name='arrow-dropright-circle-outline'></ion-icon>
-                </a>
-            </ion-card-title>
-            <h4>
-                Previdência e Assistência Social
-            </h4>
-            <h1 padding-vertical>
-                Cria novas regras para previdência, entre as quais idade mínima de 65 anos para aposentadoria.
-            </h1>
-            <h4>
-                Michel Temer (PMDB)
-            </h4>
-        </ion-card-content>
-
-        <ion-row>
-            <ion-col padding>
-                <button ion-button clear block color="dark" icon-start>
-                    <ion-icon name='thumbs-up'></ion-icon> SIM
-                </button>
-            </ion-col>
-            <ion-col padding text-right>
-                <button ion-button block color="danger" icon-start>
-                    <ion-icon name='thumbs-down'></ion-icon> NÃO
-                </button>
-            </ion-col>
-        </ion-row>
-    </ion-card>
-
-    <ion-card>
-        <ion-card-content>
-            <ion-card-title color="primary">
-                <a href="http://www.camara.gov.br/proposicoesWeb/prop_mostrarintegra?codteor=1458551&filename=PL+5317/2016">
-                    PLC 5317-2016&nbsp;&nbsp;&nbsp;<ion-icon name='arrow-dropright-circle-outline'></ion-icon>
-                </a>
-            </ion-card-title>
-            <h4>
-                Direito e Defesa do Consumidor
-            </h4>
-            <h1 padding-vertical>
-                Obriga as prestadoras de serviços de internet a oferecer aos seus clientes planos de internet sem limite de consumo de dados com preços e condições razoáveis.
-            </h1>
-            <h4>
-                Veneziano Vital do Rêgo (PMDB - PB)
-            </h4>
-        </ion-card-content>
-
-        <ion-row>
-            <ion-col padding>
-                <button ion-button block color="secondary" icon-start>
-                    <ion-icon name='thumbs-up'></ion-icon> SIM
-                </button>
-            </ion-col>
-            <ion-col padding text-right>
-                <button ion-button clear block color="dark" icon-start>
-                    <ion-icon name='thumbs-down'></ion-icon> NÃO
-                </button>
-            </ion-col>
-        </ion-row>
-    </ion-card>
-
-    <!-- <ion-card *ngFor="let proposicao of proposicoes">
-    <ion-card-content>
-    <ion-card-title>
-    {{ proposicao.nome }}
-</ion-card-title>
-
-<h4>
-Tema: {{ proposicao.tema }}
-</h4>
-<h4 padding-vertical>
-Ementa: {{ proposicao.ementa }}
-</h4>
-<h4>
-Autor: {{ proposicao.autorNome }} ({{ proposicao.autorPartido }} - {{ proposicao.autorUf }})
-</h4>
-</ion-card-content>
-
-<ion-row no-padding>
-<ion-col>
-<button ion-button clear large color="secondary" icon-start>
-<ion-icon name='thumbs-up'></ion-icon>
-</button>
-</ion-col>
-<ion-col text-right>
-<button ion-button clear large color="danger" icon-start>
-<ion-icon name='thumbs-down'></ion-icon>
-</button>
-</ion-col>
-</ion-row>
-</ion-card> -->
 </ion-content>

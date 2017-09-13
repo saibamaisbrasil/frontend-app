@@ -6,16 +6,21 @@
 
 <ion-content>
     <ion-row padding text-center>
-        <h4>Você é parcialmente representado pelo deputado <b>Rodrigo Maia (DEM - RJ)</b></h4>
+        <!-- até 49.9%... nao é representado -->
+        <h4 *ngIf="porcentagem >= 0 && porcentagem < 50">O deputado <b>{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</b> não te representa</h4>
+        <!-- entre 50% e 89.9%... é representado parcialmente -->
+        <h4 *ngIf="porcentagem >= 50 && porcentagem < 90">O deputado <b>{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</b> te representa parcialmente</h4>
+        <!-- mais de 90%... é representado -->
+        <h4 *ngIf="porcentagem >= 90 && porcentagem <= 100">O deputado <b>{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</b> te representa</h4>
 
         <div style="display: block; max-width: 80%; margin: 0 auto" padding-vertical>
             <canvas baseChart
-            [data]="[66.6, 33.4]"
+            [data]="[porcentagem, 100 - porcentagem]"
             [colors]="[{ backgroundColor: ['#004A80', '#f4f4f4']}]"
             [chartType]="'doughnut'"></canvas>
         </div>
 
-        <div style="margin: 0 auto;" padding>Correspondência: 66,6%</div>
+        <div style="margin: 0 auto;" padding>Correspondência: {{ porcentagem }}%</div>
 
         <button ion-button block color="primary">
             <ion-icon name='share-alt'></ion-icon>&nbsp;&nbsp;COMPARTILHAR

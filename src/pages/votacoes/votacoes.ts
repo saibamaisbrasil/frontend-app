@@ -17,11 +17,19 @@ export class VotacoesPage {
     temas: any;
     estados: any;
     partidos: any;
+    autores: any;
 
     tema: string;
     estado: any;
     partido: any;
+    autor: any;
     deputado: any;
+
+    alert: any = this.alertCtrl.create({
+        title: 'Votações',
+        subTitle: 'Selecione um deputado para continuar.',
+        buttons: ['OK']
+    });
 
     constructor(public navCtrl: NavController,
         public alertCtrl: AlertController,
@@ -36,6 +44,7 @@ export class VotacoesPage {
 
         this.storage.get('deputados').then((deputados) => {
             this.deputados = deputados;
+            this.autores = deputados;
         });
 
         this.storage.get('proposicoes').then((proposicoes) => {
@@ -55,7 +64,7 @@ export class VotacoesPage {
         });
     }
 
-    filterDeputados(value: any) {
+    filterAutores() {
         let temp = this.deputados;
 
         if (this.estado && this.estado != 'ALL') {
@@ -65,7 +74,15 @@ export class VotacoesPage {
             temp = temp.filter((elem) => elem.siglaPartido == this.partido);
         }
 
-        this.deputados = temp;
+        this.autores = temp;
+    }
+
+    doContinuar() {
+        if (this.deputado > 0) {
+            this.toProposicoes();
+        } else {
+            this.alert.present();
+        }
     }
 
     toProposicoes() {
@@ -74,6 +91,7 @@ export class VotacoesPage {
             tema: this.tema,
             estado: this.estado,
             partido: this.partido,
+            autor: this.autor,
             deputado: this.deputado,
         });
     }
