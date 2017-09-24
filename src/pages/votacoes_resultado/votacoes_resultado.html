@@ -7,23 +7,41 @@
 <ion-content>
     <ion-row padding text-center>
         <!-- até 49.9%... nao é representado -->
-        <h4 *ngIf="porcentagem >= 0 && porcentagem < 50">O deputado <b>{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</b> não te representa</h4>
+        <h5 *ngIf="porcentagem >= 0 && porcentagem < 50">O deputado <b>{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</b> não te representa nas proposições analisadas</h5>
         <!-- entre 50% e 89.9%... é representado parcialmente -->
-        <h4 *ngIf="porcentagem >= 50 && porcentagem < 90">O deputado <b>{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</b> te representa parcialmente</h4>
+        <h5 *ngIf="porcentagem >= 50 && porcentagem < 90">O deputado <b>{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</b> te representa parcialmente nas proposições analisadas</h5>
         <!-- mais de 90%... é representado -->
-        <h4 *ngIf="porcentagem >= 90 && porcentagem <= 100">O deputado <b>{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</b> te representa</h4>
+        <h5 *ngIf="porcentagem >= 90 && porcentagem <= 100">O deputado <b>{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</b> te representa nas proposições analisadas</h5>
 
         <div style="display: block; max-width: 80%; margin: 0 auto" padding-vertical>
             <canvas baseChart
             [data]="[porcentagem, 100 - porcentagem]"
-            [colors]="[{ backgroundColor: ['#004A80', '#f4f4f4']}]"
+
+            [colors]="[{ backgroundColor: ['#147AB5', '#f4f4f4']}]"
             [chartType]="'doughnut'"></canvas>
         </div>
+        <!-- [labels]="[correspondencias + '/' + quantidade, (quantidade - correspondencias) + '/' + quantidade]" -->
+    </ion-row>
 
-        <div style="margin: 0 auto;" padding>Correspondência: {{ porcentagem }}%</div>
+    <ion-list no-padding-vertical>
+        <ion-list-header>Detalhes</ion-list-header>
+        <ion-item>
+            <ion-label>Correspondências</ion-label>
+            <ion-note item-end>{{ correspondencias }}</ion-note>
+        </ion-item>
+        <ion-item>
+            <ion-label>Proposições analisadas</ion-label>
+            <ion-note item-end>{{ quantidade }}</ion-note>
+        </ion-item>
+        <ion-item>
+            <ion-label>Porcentagem</ion-label>
+            <ion-note item-end>{{ porcentagem }}%</ion-note>
+        </ion-item>
+    </ion-list>
 
+    <ion-row padding>
         <button ion-button block color="primary">
-            <ion-icon name='share-alt'></ion-icon>&nbsp;&nbsp;COMPARTILHAR
+            <ion-icon name='logo-twitter'></ion-icon>&nbsp;&nbsp;COMPARTILHAR
         </button>
     </ion-row>
 </ion-content>

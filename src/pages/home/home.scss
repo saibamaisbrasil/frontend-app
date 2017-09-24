@@ -2,51 +2,64 @@ page-home {
 
 }
 
-.subtitle{
+.home-background {
+    background-color: $page-background;
+}
+
+.home-header {
+    padding: 32px 10px 10px 10px;
+    height: 128px;
+    color: white;
+    background-color: color($colors, primary);
     text-align: center;
-    width: 100%;
-    background-color: #0063A9;
-    font-size: 1.3em;
-    padding: 0px 10px 10px 10px;
+}
+
+.home-divider {
+    width: 60%;
+    height: 4px;
+    background-color: color($colors, secondary);
+    margin: 8px 0px 8px 0;
+}
+
+.home-title {
+    font-size: 1.7em;
+}
+
+.home-subtitle {
+    font-size: 1em;
+}
+
+.home-logo {
+    margin: 0 auto;
+    margin-top: 24px;
+    margin-bottom: 10px;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+}
+
+.home-card {
+    text-align: center;
+    padding: 24px;
+}
+
+.home-card-first {
+    text-align: left;
+    margin-top: -32px;
+    padding: 16px;
+}
+
+.home-card-primary {
+    background-color: color($colors, primary);
     color: white;
 }
 
-.card-background-page {
-    ion-card {
-        position: relative;
-        text-align: center;
-    }
+.home-card-secondary {
+    background-color: color($colors, secondary);
+    color: white;
+}
 
-    .card-image {
-        height: 100px;
-    }
-
-    .card-overlay{
-        background-color: rgba(0, 0, 0, 0.3);
-    }
-
-    .card-overlay-soon{
-        background-color: rgba(50, 50, 50, 0.95);
-        // background-color: rgba(0, 99, 169, 0.9);
-    }
-
-    .card-title {
-        height: 100px;
-        position: absolute;
-        top: 0;
-        padding: 30px;
-        width: 100%;
-        font-weight: bold;
-        color: #fff;
-        // background-color: rgba(0, 0, 0, 0.3);
-    }
-
-    .card-subtitle {
-        font-size: 1.0em;
-        position: absolute;
-        top: 40%;
-        width: 100%;
-        color: #fff;
-    }
-
+.home-card-dark {
+    background-color: color($colors, dark);
+    color: white;
 }

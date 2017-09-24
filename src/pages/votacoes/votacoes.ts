@@ -47,10 +47,6 @@ export class VotacoesPage {
             this.autores = deputados;
         });
 
-        this.storage.get('proposicoes').then((proposicoes) => {
-            this.proposicoes = proposicoes;
-        });
-
         this.storage.get('temas').then((temas) => {
             this.temas = temas;
         });

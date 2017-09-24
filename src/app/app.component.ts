@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Http } from '@angular/http';
 import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import * as firebase from 'firebase/app';
 import 'rxjs/Rx';
 
 import { API_URL } from './app.constants';
@@ -15,7 +16,7 @@ import { IntroPage } from '../pages/intro/intro';
     templateUrl: 'app.html',
 })
 export class MyApp {
-    rootPage: any = IntroPage;
+    rootPage: any;
     storage: Storage;
 
     constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
@@ -27,6 +28,11 @@ export class MyApp {
         platform.ready().then(() => {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
+
+            this.storage.get('user').then((user) => {
+                this.rootPage = user ? TabsPage : IntroPage;
+            });
+
             statusBar.styleDefault();
             splashScreen.hide();
         });

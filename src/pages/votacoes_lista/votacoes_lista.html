@@ -30,12 +30,12 @@
 
         <ion-row>
             <ion-col padding>
-                <button ion-button clear="{{ proposicao.voto != 'Sim' }}" block color="secondary" (click)="proposicao.voto != 'Sim' ? proposicao.voto = 'Sim' : proposicao.voto = undefined" icon-start>
+                <button ion-button clear="{{ proposicao.votoEleitor != 'Sim' }}" block color="success" (click)="proposicao.votoEleitor != 'Sim' ? proposicao.votoEleitor = 'Sim' : proposicao.votoEleitor = undefined" icon-start>
                     <ion-icon name='thumbs-up'></ion-icon> SIM
                 </button>
             </ion-col>
             <ion-col padding text-right>
-                <button ion-button clear="{{ proposicao.voto != 'Não' }}" block color="danger" (click)="proposicao.voto != 'Não' ? proposicao.voto = 'Não' : proposicao.voto = undefined" icon-start>
+                <button ion-button clear="{{ proposicao.votoEleitor != 'Não' }}" block color="danger" (click)="proposicao.votoEleitor != 'Não' ? proposicao.votoEleitor = 'Não' : proposicao.votoEleitor = undefined" icon-start>
                     <ion-icon name='thumbs-down'></ion-icon> NÃO
                 </button>
             </ion-col>

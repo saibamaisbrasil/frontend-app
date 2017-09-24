@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Storage } from '@ionic/storage';
 
+import { API_URL } from '../../app/app.constants';
 import { VotacoesResultadoPage } from '../votacoes_resultado/votacoes_resultado';
 
 @Component({
@@ -15,6 +18,9 @@ export class VotacoesListaPage {
     proposicoes: any;
     votacoes: any;
     deputado: any;
+    user: any;
+    info: any;
+    rdf: any = [];
 
     quantidade: number;
     correspondencias: number;
@@ -26,9 +32,10 @@ export class VotacoesListaPage {
     });
 
     constructor(public navCtrl: NavController,
+        public loadingController: LoadingController,
         public navParams: NavParams,
         public alertCtrl: AlertController,
-        storage: Storage) {
+        private http: Http, storage: Storage) {
         this.storage = storage;
     }
 
@@ -65,7 +72,20 @@ export class VotacoesListaPage {
             this.votacoes = votacoes;
         });
 
+        this.storage.get('user').then((user) => {
+            this.user = user;
+        });
+
+        this.storage.get('info').then((info) => {
+            this.info = info;
+        });
+
         this.deputado = this.navParams.get('deputado');
+    }
+
+    // retorna o deputado
+    getDeputado(id) {
+        return this.deputados.filter((elem) => elem.id == id)[0];
     }
 
     // retorna a primeira votacao de uma proposicao
@@ -81,29 +101,57 @@ export class VotacoesListaPage {
 
     // calcula o resultado e direciona para a pagina de resultado da enquete
     doConcluir() {
+        let temp = [];
+        this.rdf = [];
         this.quantidade = 0;
         this.correspondencias = 0;
 
+        // configura e mostra tela de loading
+        let loader = this.loadingController.create({
+            content: ''
+        });
+        loader.present();
+
         for (let proposicao of this.proposicoes) {
             // verifica se a proposicao foi votada pelo usuario
-            if (proposicao.voto) {
+            if (proposicao.votoEleitor) {
+                // pega o eleitor, deputado e o voto do deputado pro RDF
+                proposicao.eleitor = this.user;
+                proposicao.eleitor.info = this.info;
+                proposicao.deputado = this.getDeputado(this.deputado);
+                proposicao.votoDeputado = this.getVotoDeputado(proposicao.id, this.deputado);
+
                 // compara o voto do usuario com o voto do deputado
-                if (this.getVotoDeputado(proposicao.id, this.deputado).includes(proposicao.voto)) {
+                if (proposicao.votoDeputado.includes(proposicao.votoEleitor)) {
                     this.correspondencias++;
                 }
 
                 this.quantidade++;
 
-                console.log('Proposicao: ' + proposicao.id + ' Usuario: ' + proposicao.voto);
-                console.log('Proposicao: ' + proposicao.id + ' Deputado: ' + this.getVotoDeputado(proposicao.id, this.deputado));
+                delete(proposicao._id);
+                this.rdf.push(proposicao);
+
+                // console.log('Proposicao: ' + proposicao.id + ' Usuario: ' + proposicao.votoEleitor);
+                // console.log('Proposicao: ' + proposicao.id + ' Deputado: ' + proposicao.votoDeputado);
             }
         }
 
-        if (this.quantidade > 0) {
-            this.toResultado();
-        } else {
-            this.alert.present();
-        }
+        this.http.post(API_URL + 'rdf', JSON.stringify(this.rdf))
+        .finally(() => {
+            loader.dismiss();
+
+            if (this.quantidade > 0) {
+                this.toResultado();
+            } else {
+                this.alert.present();
+            }
+        })
+        .subscribe(res => {
+            // console.log(res);
+        },
+        (err) => {
+            console.log(err);
+        });
     }
 
     // direciona para a pagina de resultado da enquete

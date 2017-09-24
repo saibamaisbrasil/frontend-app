@@ -1,9 +1,9 @@
 <ion-content class="tutorial-page">
     <ion-slides pager>
-        <ion-slide *ngFor="let slide of slides">
+        <ion-slide padding-horizontal *ngFor="let slide of slides">
             <ion-toolbar>
                 <ion-buttons end>
-                    <button ion-button color="primary" (click)="toHome()">Pular</button>
+                    <button ion-button color="primary" (click)="toLogin()">Pular</button>
                 </ion-buttons>
             </ion-toolbar>
 
@@ -29,9 +29,8 @@
             </button>
 
             <ion-footer padding>
-                <button ion-button large clear icon-end color="primary" (click)="toHome()">
+                <button ion-button block clear icon-end color="primary" (click)="toHome()">
                     Continuar sem uma conta
-                    <ion-icon name="arrow-forward"></ion-icon>
                 </button>
             </ion-footer>
         </ion-slide>

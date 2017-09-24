@@ -1,18 +1,27 @@
-<ion-header>
-    <ion-navbar>
-        <ion-title>HOME</ion-title>
-    </ion-navbar>
-    <div class="subtitle">
-        Saiba mais Brasil
+<ion-content class="home-background">
+    <div class="home-header">
+        <span class="home-title">Saiba mais Brasil</span>
+
+        <!-- <ion-avatar>
+            <img src="assets/img/slidebox-img-1.png" class="home-logo">
+        </ion-avatar> -->
+        <br>
+        <span class="home-subtitle">Home</span>
     </div>
-</ion-header>
 
-<ion-content class="card-background-page">
+    <ion-card class="home-card home-card-first">
+        <div class="">
+            Bem-vindo ao Saiba mais Brasil
+            <div class="home-divider"></div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </ion-card>
+
     <ion-card (click)="toVotacoes()">
-        <img src="assets/img/slidebox-img-2.png" class="card-image"/>
-
-        <h1 class="card-title card-overlay">Votações</h1>
-        <div class="card-subtitle">{{ proposicoes?.length }} proposições</div>
+        <div class="home-card home-card-primary">
+            <h1>Votações</h1>
+            {{ proposicoes?.length }} proposições
+        </div>
 
         <ion-row no-padding>
             <ion-col>
@@ -29,10 +38,10 @@
     </ion-card>
 
     <ion-card (click)="toDeputados()">
-        <img src="assets/img/slidebox-img-1.png" class="card-image"/>
-
-        <h1 class="card-title card-overlay">Deputados</h1>
-        <div class="card-subtitle">{{ deputados?.length }} em {{ partidos?.length }} partidos</div>
+        <div class="home-card home-card-primary">
+            <h1>Deputados</h1>
+            {{ deputados?.length }} em {{ partidos?.length }} partidos
+        </div>
 
         <ion-row no-padding>
             <ion-col>
@@ -49,10 +58,10 @@
     </ion-card>
 
     <ion-card>
-        <img src="assets/img/slidebox-img-1a.png" class="card-image"/>
-
-        <h1 class="card-title card-overlay-soon">Gastos</h1>
-        <div class="card-subtitle">EM BREVE!</div>
+        <div class="home-card home-card-dark">
+            <h1>Gastos</h1>
+            EM BREVE!
+        </div>
 
         <ion-row no-padding>
             <ion-col>

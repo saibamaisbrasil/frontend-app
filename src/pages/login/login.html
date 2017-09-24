@@ -1,5 +1,5 @@
 <ion-content>
-    <h2 padding style="margin-top: 30%">Login</h2>
+    <h2 padding style="margin-top: 20%">Login</h2>
 
     <ion-item padding-horizontal>
         <ion-label floating>Email</ion-label>
@@ -11,24 +11,30 @@
     </ion-item>
 
     <ion-row padding>
-        <ion-col>
-            <button ion-button block icon-end color="primary" (click)="doLogin(email, senha)" [disabled]="email == '' || senha == ''">
+        <ion-col no-padding>
+            <button ion-button block color="primary" (click)="doLoginEmail(email, senha)" [disabled]="email == '' || senha == ''">
                 Entrar
             </button>
         </ion-col>
-        <ion-col text-right>
-            <button ion-button block clear icon-end color="primary" (click)="doRegister(email, senha)" [disabled]="email == '' || senha == ''">
+        <ion-col no-padding text-right>
+            <button ion-button block clear color="primary" (click)="doRegisterEmail(email, senha)" [disabled]="email == '' || senha == ''">
                 Registrar
             </button>
         </ion-col>
     </ion-row>
 
+    <ion-row padding>
+        <button ion-button block icon-left color="primary" (click)="doLoginFacebook()">
+            <ion-icon name="logo-facebook"></ion-icon>
+            Entrar com Facebook
+        </button>
+    </ion-row>
+
     <small text-center>{{ mensagem }}</small>
 
     <ion-footer padding>
-        <button ion-button large clear icon-end color="primary" (click)="toHome()">
+        <button ion-button block clear icon-right color="primary" (click)="toHome()">
             Continuar sem uma conta
-            <ion-icon name="arrow-forward"></ion-icon>
         </button>
     </ion-footer>
 </ion-content>
