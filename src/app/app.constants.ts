@@ -1,6 +1,6 @@
 // export const API_URL : string = 'http://smb.app/';
-// export const API_URL : string = 'http://localhost:8080/';
-export const API_URL : string = 'https://saibamaisbrasil.herokuapp.com/';
+export const API_URL : string = 'http://localhost:8080/';
+// export const API_URL : string = 'https://saibamaisbrasil.herokuapp.com/';
 
 export const FIREBASE_CONFIG = {
     apiKey: "AIzaSyBQ0T-fvaEN1V1jtmE2lsqLTn6nz3JZLEY",
