@@ -1,0 +1,10 @@
+version: "3"
+services:
+   frontend:
+      container_name: smbf
+      build: .
+      volumes:
+         - ./:/var/www
+      ports:
+         - 8181:8100
+      command: /bin/sh -c "npm install && npm install -g cordova ionic && ionic serve"

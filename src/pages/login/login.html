@@ -1,40 +1,48 @@
 <ion-content>
-    <h2 padding style="margin-top: 20%">Login</h2>
+    <h2 padding style="margin-top: 20%">Sobre você</h2>
 
-    <ion-item padding-horizontal>
-        <ion-label floating>Email</ion-label>
-        <ion-input type="text" [(ngModel)]="email"></ion-input>
-    </ion-item>
-    <ion-item padding-horizontal>
-        <ion-label floating>Senha</ion-label>
-        <ion-input type="password" [(ngModel)]="senha"></ion-input>
-    </ion-item>
+    <ion-list>
+        <ion-list-header></ion-list-header>
 
-    <ion-row padding>
-        <ion-col no-padding>
-            <button ion-button block color="primary" (click)="doLoginEmail(email, senha)" [disabled]="email == '' || senha == ''">
-                Entrar
-            </button>
-        </ion-col>
-        <ion-col no-padding text-right>
-            <button ion-button block clear color="primary" (click)="doRegisterEmail(email, senha)" [disabled]="email == '' || senha == ''">
-                Registrar
-            </button>
-        </ion-col>
-    </ion-row>
+        <ion-item>
+            <ion-label>Faixa etária</ion-label>
+            <ion-select [(ngModel)]="faixa">
+                <ion-option *ngFor="let faixa of faixas" [value]="faixa">{{ faixa.descricao }}</ion-option>
+            </ion-select>
+        </ion-item>
 
-    <ion-row padding>
-        <button ion-button block icon-left color="primary" (click)="doLoginFacebook()">
-            <ion-icon name="logo-facebook"></ion-icon>
-            Entrar com Facebook
-        </button>
-    </ion-row>
+        <ion-item>
+            <ion-label>Sexo</ion-label>
+            <ion-select [(ngModel)]="sexo">
+                <ion-option *ngFor="let sexo of sexos" [value]="sexo.value">{{ sexo.descricao }}</ion-option>
+            </ion-select>
+        </ion-item>
 
-    <small text-center>{{ mensagem }}</small>
+        <ion-item>
+            <ion-label>Escolaridade</ion-label>
+            <ion-select [(ngModel)]="escolaridade">
+                <ion-option *ngFor="let escolaridade of escolaridades" [value]="escolaridade.value">{{ escolaridade.descricao }}</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Ocupação política</ion-label>
+            <ion-select [(ngModel)]="ocupacao">
+                <ion-option *ngFor="let ocupacao of ocupacoes" [value]="ocupacao.value">{{ ocupacao.descricao }}</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Estado de votação</ion-label>
+            <ion-select [(ngModel)]="estado">
+                <ion-option *ngFor="let estado of estados" [value]="estado.sigla">{{ estado.nome }}</ion-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
 
     <ion-footer padding>
-        <button ion-button block clear icon-right color="primary" (click)="toHome()">
-            Continuar sem uma conta
+        <button ion-button block clear icon-right color="primary" (click)="toHome()" [disabled]="!faixa || !sexo || !escolaridade || !ocupacao || !estado">
+            Continuar
         </button>
     </ion-footer>
 </ion-content>

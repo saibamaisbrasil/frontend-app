@@ -74,7 +74,7 @@ export class MyApp {
         });
 
         // carrega os temas das proposicoes
-        this.http.get(API_URL + 'proposicoes/temas')
+        this.http.get(API_URL + 'temas')
         .subscribe(res => {
             this.storage.set('temas', res.json());
         },

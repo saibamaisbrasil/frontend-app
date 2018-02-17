@@ -1,5 +1,6 @@
 {
   "name": "smb",
   "app_id": "e4c09ccc",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {}
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
 
 import { API_URL } from '../../app/app.constants';
@@ -19,7 +19,7 @@ export class VotacoesListaPage {
     votacoes: any;
     deputado: any;
     user: any;
-    info: any;
+    // info: any;
     rdf: any = [];
 
     quantidade: number;
@@ -76,9 +76,9 @@ export class VotacoesListaPage {
             this.user = user;
         });
 
-        this.storage.get('info').then((info) => {
-            this.info = info;
-        });
+        // this.storage.get('info').then((info) => {
+        //     this.info = info;
+        // });
 
         this.deputado = this.navParams.get('deputado');
     }
@@ -96,12 +96,11 @@ export class VotacoesListaPage {
     // retorna o voto de um deputado em uma proposicao
     getVotoDeputado(proposicao, deputado) {
         let votos = this.getVotacao(proposicao).votos;
-        return votos.filter((elem) => elem.id == deputado)[0].voto;
+        return votos.filter((elem) => elem.id == deputado)[0].voto.replace(/\s/g,'');
     }
 
     // calcula o resultado e direciona para a pagina de resultado da enquete
     doConcluir() {
-        let temp = [];
         this.rdf = [];
         this.quantidade = 0;
         this.correspondencias = 0;
@@ -112,31 +111,35 @@ export class VotacoesListaPage {
         });
         loader.present();
 
-        for (let proposicao of this.proposicoes) {
+        for (let value of this.proposicoes) {
             // verifica se a proposicao foi votada pelo usuario
-            if (proposicao.votoEleitor) {
-                // pega o eleitor, deputado e o voto do deputado pro RDF
-                proposicao.eleitor = this.user;
-                proposicao.eleitor.info = this.info;
-                proposicao.deputado = this.getDeputado(this.deputado);
+            if (value.votoEleitor) {
+                let proposicao = value;
                 proposicao.votoDeputado = this.getVotoDeputado(proposicao.id, this.deputado);
+                delete(proposicao._id);
+
+                let eleitor = this.user;
+                // eleitor.info = this.info;
+
+                let deputado = this.getDeputado(this.deputado);
+
+                let temp = { proposicao: proposicao, eleitor: eleitor, deputado: deputado};
 
                 // compara o voto do usuario com o voto do deputado
-                if (proposicao.votoDeputado.includes(proposicao.votoEleitor)) {
+                if (temp.proposicao.votoDeputado.includes(proposicao.votoEleitor)) {
                     this.correspondencias++;
                 }
 
                 this.quantidade++;
 
-                delete(proposicao._id);
-                this.rdf.push(proposicao);
+                this.rdf.push(temp);
 
                 // console.log('Proposicao: ' + proposicao.id + ' Usuario: ' + proposicao.votoEleitor);
                 // console.log('Proposicao: ' + proposicao.id + ' Deputado: ' + proposicao.votoDeputado);
             }
         }
 
-        this.http.post(API_URL + 'rdf', JSON.stringify(this.rdf))
+        this.http.post(API_URL + 'rdf', this.rdf)
         .finally(() => {
             loader.dismiss();
 
@@ -147,10 +150,10 @@ export class VotacoesListaPage {
             }
         })
         .subscribe(res => {
-            // console.log(res);
+            // console.log(res.json());
         },
         (err) => {
-            console.log(err);
+            console.log(err.json());
         });
     }
 
