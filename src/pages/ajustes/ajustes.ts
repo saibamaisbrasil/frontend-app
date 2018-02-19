@@ -3,7 +3,6 @@ import { NavController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { AngularFireAuth } from 'angularfire2/auth';
 
 import { API_URL } from '../../app/app.constants';
 import { IntroPage } from '../intro/intro';
@@ -15,7 +14,7 @@ import { IntroPage } from '../intro/intro';
 export class AjustesPage {
     storage: Storage;
 
-    constructor(public navCtrl: NavController, public loadingController: LoadingController, private http: Http, storage: Storage, private af: AngularFireAuth) {
+    constructor(public navCtrl: NavController, public loadingController: LoadingController, private http: Http, storage: Storage) {
         this.storage = storage;
     }
 
@@ -26,7 +25,6 @@ export class AjustesPage {
     doLogout() {
         this.storage.remove('user');
 
-        this.af.auth.signOut();
         this.toIntro();
     }
 

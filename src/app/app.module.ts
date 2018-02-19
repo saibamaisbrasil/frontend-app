@@ -6,10 +6,8 @@ import { HttpModule } from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ChartsModule } from 'ng2-charts/charts/charts';
-import { FIREBASE_CONFIG } from './app.constants';
+import { TwitterService } from 'ng2-twitter';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { IntroPage } from '../pages/intro/intro';
@@ -44,8 +42,6 @@ import { AjustesPage } from '../pages/ajustes/ajustes';
         BrowserModule,
         IonicModule.forRoot(MyApp),
         HttpModule,
-        AngularFireModule.initializeApp(FIREBASE_CONFIG),
-        AngularFireAuthModule,
         ChartsModule
     ],
     bootstrap: [
@@ -70,6 +66,7 @@ import { AjustesPage } from '../pages/ajustes/ajustes';
         HttpModule,
         StatusBar,
         SplashScreen,
+        TwitterService,
         Storage,
         {provide: ErrorHandler, useClass: IonicErrorHandler}
     ]

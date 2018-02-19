@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Http } from '@angular/http';
 import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import * as firebase from 'firebase/app';
 import 'rxjs/Rx';
 
 import { API_URL } from './app.constants';
