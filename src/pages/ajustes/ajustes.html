@@ -9,13 +9,13 @@
         <ion-list-header></ion-list-header>
 
         <button ion-item (click)="doRecarregarLocal()">Recarregar dados locais</button>
-        <!-- <button ion-item (click)="doRecarregarServidor()">Recarregar dados remotos</button> -->
-        <button ion-item>Made in Bahia &nbsp;<ion-icon name="heart" color="primary"></ion-icon></button>
+        <button ion-item (click)="doRecarregarServidor()" [disabled]="true">Recarregar dados remotos</button>
+
     </ion-list>
 
     <ion-list>
         <ion-list-header></ion-list-header>
 
-        <button ion-item (click)="doLogout()">Sair</button>
+        <button ion-item>Made in Bahia &nbsp;<ion-icon name="heart" color="primary"></ion-icon></button>
     </ion-list>
 </ion-content>
