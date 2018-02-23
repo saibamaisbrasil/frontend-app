@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Http } from '@angular/http';
+import { LoadingController } from 'ionic-angular';
 
 import { API_URL } from '../../app/app.constants';
 
@@ -16,8 +17,9 @@ export class VotacoesResultadoPage {
     quantidade: any;
     correspondencias: any;
     porcentagem: any;
+    btnShareDisabled: boolean = false;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, storage: Storage, private http: Http) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, storage: Storage, private http: Http, public loadingController: LoadingController) {
         this.storage = storage;
         this.deputado = {};
         this.porcentagem = 0;
@@ -39,6 +41,12 @@ export class VotacoesResultadoPage {
     }
 
     doShare() {
+        // configura e mostra tela de loading
+        let loader = this.loadingController.create({
+            content: ''
+        });
+        loader.present();
+
         var params = {
             deputado: this.deputado,
             resultado: {
@@ -49,8 +57,12 @@ export class VotacoesResultadoPage {
         };
 
         this.http.post(API_URL + 'twitter', params)
-        .finally(() => { })
-        .subscribe(res => { },
+        .finally(() => { loader.dismiss(); })
+        .map(res => res.json())
+        .subscribe(data => {
+            // console.log(data);
+            this.btnShareDisabled = true;
+         },
         (err) => { });
     }
 }

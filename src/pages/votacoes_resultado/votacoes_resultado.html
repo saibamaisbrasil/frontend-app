@@ -40,8 +40,13 @@
     </ion-list>
 
     <ion-row padding>
-        <button ion-button block color="primary" (click)="doShare()">
+        <p [hidden]="btnShareDisabled">Um tweet com esse resultado será publicado no perfil do SMB no twitter.</p>
+
+        <button ion-button block color="primary" (click)="doShare()" [hidden]="btnShareDisabled">
             <ion-icon name='logo-twitter'></ion-icon>&nbsp;&nbsp;COMPARTILHAR
         </button>
+        <a href="https://twitter.com/saibamaisbrasil" ion-button block clear color="primary" [hidden]="!btnShareDisabled">
+            <ion-icon name='logo-twitter'></ion-icon>&nbsp;&nbsp;VER TWEET
+        </a>
     </ion-row>
 </ion-content>
