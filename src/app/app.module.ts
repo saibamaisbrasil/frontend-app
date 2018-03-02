@@ -40,7 +40,12 @@ import { AjustesPage } from '../pages/ajustes/ajustes';
     ],
     imports: [
         BrowserModule,
-        IonicModule.forRoot(MyApp),
+        IonicModule.forRoot(MyApp, {
+        platforms: {
+            ios: {
+                backButtonText: 'Voltar'
+            }
+        }}),
         HttpModule,
         ChartsModule
     ],

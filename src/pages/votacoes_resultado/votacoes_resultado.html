@@ -7,17 +7,17 @@
 <ion-content>
     <ion-row padding text-center>
         <!-- até 49.9%... nao é representado -->
-        <h5 *ngIf="porcentagem >= 0 && porcentagem < 50">O deputado <b>{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</b> não te representa nas proposições analisadas</h5>
+        <h5 *ngIf="porcentagem >= 0 && porcentagem < 50">O(a) deputado(a) <b>{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</b> não te representa nas proposições analisadas</h5>
         <!-- entre 50% e 89.9%... é representado parcialmente -->
-        <h5 *ngIf="porcentagem >= 50 && porcentagem < 90">O deputado <b>{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</b> te representa parcialmente nas proposições analisadas</h5>
+        <h5 *ngIf="porcentagem >= 50 && porcentagem < 90">O(a) deputado(a) <b>{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</b> te representa parcialmente nas proposições analisadas</h5>
         <!-- mais de 90%... é representado -->
-        <h5 *ngIf="porcentagem >= 90 && porcentagem <= 100">O deputado <b>{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</b> te representa nas proposições analisadas</h5>
+        <h5 *ngIf="porcentagem >= 90 && porcentagem <= 100">O(a) deputado(a) <b>{{ deputado.nome }} ({{ deputado.siglaPartido }} - {{ deputado.siglaUf }})</b> te representa nas proposições analisadas</h5>
 
         <div style="display: block; max-width: 80%; margin: 0 auto" padding-vertical>
             <canvas baseChart
             [data]="[porcentagem, 100 - porcentagem]"
 
-            [colors]="[{ backgroundColor: ['#147AB5', '#f4f4f4']}]"
+            [colors]="[{ backgroundColor: ['#0070c0', '#f4f4f4']}]"
             [chartType]="'doughnut'"></canvas>
         </div>
         <!-- [labels]="[correspondencias + '/' + quantidade, (quantidade - correspondencias) + '/' + quantidade]" -->

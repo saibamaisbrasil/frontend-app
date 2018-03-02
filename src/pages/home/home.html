@@ -1,5 +1,5 @@
 <ion-content class="home-background">
-    <div class="home-header">
+    <div class="home-header" style="background-image: url('../../assets/img/bg-br4.png'); background-repeat: no-repeat; background-position: top;">
         <span class="home-title">Saiba mais Brasil</span>
 
         <!-- <ion-avatar>
@@ -13,12 +13,13 @@
         <div class="">
             Bem-vindo ao Saiba mais Brasil
             <div class="home-divider"></div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p style="font-size: 0.9em">Acompanhe de perto as votações da Câmara dos Deputados e fique de olho no posicionamento do seu representante.</p>
         </div>
     </ion-card>
 
     <ion-card (click)="toVotacoes()">
         <div class="home-card home-card-primary">
+             <!-- style="background-image: url('../../assets/img/slidebox-img-1.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;"> -->
             <h1>Votações</h1>
             {{ proposicoes?.length }} proposições
         </div>
@@ -39,6 +40,7 @@
 
     <ion-card (click)="toDeputados()">
         <div class="home-card home-card-primary">
+             <!-- style="background-image: url('../../assets/img/slidebox-img-2.png'); background-repeat: no-repeat; background-size: cover; background-position: center bottom;"> -->
             <h1>Deputados</h1>
             {{ deputados?.length }} em {{ partidos?.length }} partidos
         </div>
