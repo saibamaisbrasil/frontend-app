@@ -67,12 +67,12 @@ export class AjustesPage {
 
         // carrega os deputados
         this.http.get(API_URL + 'deputados')
-        .finally(() => { loader.dismiss(); })
         .subscribe(res => {
             this.storage.set('deputados', res.json());
-        },
-        (err) => {
+        }, (err) => {
 
+        }, () => {
+            loader.dismiss();
         });
 
         // carrega as proposicoes

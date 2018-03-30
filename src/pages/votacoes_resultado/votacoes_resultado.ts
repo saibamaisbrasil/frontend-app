@@ -57,12 +57,9 @@ export class VotacoesResultadoPage {
         };
 
         this.http.post(API_URL + 'twitter', params)
-        .finally(() => { loader.dismiss(); })
-        .map(res => res.json())
         .subscribe(data => {
             // console.log(data);
             this.btnShareDisabled = true;
-         },
-        (err) => { });
+        }, (err) => { }, () => { loader.dismiss(); });
     }
 }

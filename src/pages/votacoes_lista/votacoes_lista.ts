@@ -140,7 +140,11 @@ export class VotacoesListaPage {
         }
 
         this.http.post(API_URL + 'rdf', this.rdf)
-        .finally(() => {
+        .subscribe(res => {
+            // console.log(res.json());
+        }, (err) => {
+            console.log(err.json());
+        }, () => {
             loader.dismiss();
 
             if (this.quantidade > 0) {
@@ -148,12 +152,6 @@ export class VotacoesListaPage {
             } else {
                 this.alert.present();
             }
-        })
-        .subscribe(res => {
-            // console.log(res.json());
-        },
-        (err) => {
-            console.log(err.json());
         });
     }
 
